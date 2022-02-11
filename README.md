@@ -3,8 +3,7 @@ imgpreview
 
 This is a Go program that generates tiny blurry previews for images that you can embed
 into HTML, so that your website visitors have something to look at while the image loads,
-similar to https://engineering.fb.com/2015/08/06/android/the-technology-behind-preview-photos/
-but **uses no JavaScript, only inline CSS** (that embeds an SVG image that embeds a tiny WebP image).
+similar to https://engineering.fb.com/2015/08/06/android/the-technology-behind-preview-photos/. **It uses no JavaScript, only inline CSS** (that embeds an SVG image that embeds a tiny WebP image).
 
 Example:
 
