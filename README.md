@@ -19,7 +19,8 @@ Caveats
 
 1. Only works if the browser knows the image size (`img` tags have `width` and `height` or set with CSS).
 2. Doesn't work with transparent images, since the preview image is the image background
-(however, this can be fixed with JavaScript to remove background from CSS after the image loads).
+(however, this can be fixed with JavaScript to remove background from CSS after the image loads,
+for example by adding `onload="this.style.background='none'"` attribute).
 3. Only works in browsers that support SVG and WebP (all modern browsers do).
 
 How it works
