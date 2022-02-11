@@ -35,7 +35,7 @@ This WebP is then converted to Base64 data URI:
 data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoqAB8AP8nU3GY/tCwnMAqr8DkJQAAPpCFvc1+gv4l5aLFvwFAA/t6qZ8zzfS7wWsF7C1w3IqQr9kr+ZPlFjfNGZ2lwqYWHQyJIZFzzQtDn3ar3HSw3W1XGLQPQyj3HZfadC+YJaBAYTTtOJeZamHk6s4FnBHNNLgIwECcAAAA=
 ```
 
-The result is then embedded into an SVG that applies a gaussian blur filter to it
+The result is then embedded into an SVG that applies the gaussian blur filter to it
 (we can't use the CSS `blur` filter because it will blur the whole image,
 not its background):
 
@@ -63,7 +63,7 @@ in the `style` attribute of your image:
 background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cfilter id=%22f%22%3E%3CfeGaussianBlur stdDeviation=%2210%22/%3E%3C/filter%3E%3C/defs%3E%3Cimage width=%22100%%22 height=%22100%%22 filter=%22url(%23f)%22 href=%22data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoqAB8AP8nU3GY/tCwnMAqr8DkJQAAPpCFvc1+gv4l5aLFvwFAA/t6qZ8zzfS7wWsF7C1w3IqQr9kr+ZPlFjfNGZ2lwqYWHQyJIZFzzQtDn3ar3HSw3W1XGLQPQyj3HZfadC+YJaBAYTTtOJeZamHk6s4FnBHNNLgIwECcAAAA=%22/%3E%3C/svg%3E') no-repeat 100%
 ```
 
-Or, if you set `-tag` option, the program will output the ready-to-use `img` tag:
+Or, if you set the `-tag` option, the program will output a ready-to-use `img` tag:
 
 ```html
 <img src="example.jpg" width="1024" height="768" alt="" style="background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cfilter id=%22f%22%3E%3CfeGaussianBlur stdDeviation=%2210%22/%3E%3C/filter%3E%3C/defs%3E%3Cimage width=%22100%%22 height=%22100%%22 filter=%22url(%23f)%22 href=%22data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoqAB8AP8nU3GY/tCwnMAqr8DkJQAAPpCFvc1+gv4l5aLFvwFAA/t6qZ8zzfS7wWsF7C1w3IqQr9kr+ZPlFjfNGZ2lwqYWHQyJIZFzzQtDn3ar3HSw3W1XGLQPQyj3HZfadC+YJaBAYTTtOJeZamHk6s4FnBHNNLgIwECcAAAA=%22/%3E%3C/svg%3E') no-repeat 100%">
@@ -81,10 +81,10 @@ After the browser loads the original image, it will be shown on top of that back
 Installation
 ------------
 
-To install, you need Go and a C compiler (e.g., Xcode on a Mac).
+To install, you need Go and C compilers.
 Use `go get github.com/dchest/imgpreview` to install the program (ignore compiler warnings).
 
-If there's a demand, I may eventually make binaries for macOS available. Or someone can make
+If there's demand, I may eventually make binaries for macOS available. Or someone can make
 a homebrew package.
 
 Usage
