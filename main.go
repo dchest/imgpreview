@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"flag"
 	"fmt"
+	"image"
 	"log"
 	"os"
 	"path/filepath"
@@ -31,6 +32,7 @@ var (
 
 func main() {
 	flag.Parse()
+	log.SetFlags(0)
 	if flag.NArg() < 1 {
 		flag.Usage()
 		os.Exit(1)
@@ -38,6 +40,9 @@ func main() {
 	img, err := imaging.Open(flag.Arg(0), imaging.AutoOrientation(true))
 	if err != nil {
 		log.Fatal(err)
+	}
+	if !isOpaque(img) {
+		log.Printf("************\nWARNING! Image has transparency, see caveats in README.\n************")
 	}
 	resizedImg := imaging.Fit(img, *fSize, *fSize, imaging.Lanczos)
 	imageData, err := webp.EncodeRGBA(resizedImg, float32(*fQuality))
@@ -93,6 +98,22 @@ func init() {
 		p = c
 	}
 	svgTemplate = buf.String()
+}
+
+func isOpaque(m image.Image) bool {
+	switch m := m.(type) {
+	case *image.NRGBA:
+		return m.Opaque()
+	case *image.NRGBA64:
+		return m.Opaque()
+	case *image.RGBA:
+		return m.Opaque()
+	case *image.RGBA64:
+		return m.Opaque()
+	case *image.Paletted:
+		return m.Opaque()
+	}
+	return true
 }
 
 var svgTemplate = `
