@@ -119,8 +119,8 @@ func isOpaque(m image.Image) bool {
 var svgTemplate = `
 <svg xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="f" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="{{BLUR}}"/>
+    <filter id="f">
+      <feGaussianBlur stdDeviation="{{BLUR}}"/>
     </filter>
   </defs>
   <image width="100%" height="100%" filter="url(#f)" href="data:image/webp;base64,{{WEBP}}"/>
