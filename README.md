@@ -16,7 +16,7 @@ get ~150-200-byte payloads. Something to do for a future version).
 Caveats
 -------
 
-1. `img` tags must have `width` and `height` set for this to work.
+1. Only works if the browser knows the image size (`img` tags have `width` and `height` or set with CSS).
 2. Doesn't work with transparent images, since the preview image is the image background
 (however, this can be fixed with JavaScript to remove background from CSS after the image loads).
 3. Only works in browsers that support SVG and WebP (all modern browsers do).
